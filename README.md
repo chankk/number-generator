@@ -99,4 +99,30 @@ I chose `Math.random()` as the pseudorandom number generator instead of `Crypto.
 
 ### Testing
 
-I created tests using Node.js' `node:test` and `node:assert` modules.
+I created tests for `generateRandomNumbers()` using Node.js' `node:test` and `node:assert` modules. I compiled the following list of tests, which can be found in `tests.mjs` and run using `npm run test`.
+
+**Error Handling**
+
+1. throws an error on invalid input type
+1. throws an error on invalid input value
+
+**Boundary Cases**
+
+1. returns [] when n is 0
+1. returns [1] when n is 1
+
+**Edge Cases**
+
+1. returns [] when n is a float between 0 and 1
+1. returns integers when is a float greater than 1
+
+**Default behaviour**
+
+1. returns an array of 10,000 numbers by default
+
+**Number Range**
+
+1. returns n numbers in the list
+1. returns only unique numbers
+1. returns each number from 1...n (inclusive)
+1. returns only numbers between 1 and n inclusive
