@@ -6,6 +6,7 @@ Generates a list of 10,000 numbers in pseudorandom order. Each number from 1 to 
 
 -   [Installation](#installation)
 -   [Thought Process](#thought-process)
+-   [Testing](#testing)
 
 ## Installation
 
@@ -60,16 +61,16 @@ I identified the following requirements:
 
 This program will not be used for anything security-related. Therefore, cryptographically secure numbers are not needed.
 
-### Planning & Implementation
+### Planning
 
 I broke the problem into two sub-problems:
 
-1. Generate numbers from 1 to 10,000 (inclusive)
-1. Randomize the order of the numbers
+1. Generating numbers from 1 to 10,000 (inclusive)
+1. Randomizing the order of the numbers
 
 I wrote JavaScript function `generateRandomNumbers()` and decided to add a parameter `n` as an input. Despite the problem specifying a fixed quantity of 10,000 numbers, I wanted to add flexibility to make the function reusable. I set `n` as an optional parameter that defaults to 10,000 specifically for this context.
 
-#### Generate Numbers
+### Generating Numbers
 
 To create an array with numbers 1 to n, I use the following syntax:
 
@@ -80,7 +81,7 @@ const numbers = Array.from({ length: n }, (_, i) => i + 1);
 
 This constructs the array with a fixed length to optimize performance and avoid array resizing. I considered the `new Array(n)` constructor, however it's use is discouraged by JavaScript style guides due to potential for confusion and unexpected behavior. While this syntax might seem less intuitive, the comment offers a concise explanation so I felt the trade-off was ok.
 
-#### Randomize the Order of Numbers
+### Randomizing the Order of Numbers
 
 My implementation uses the **Fisher-Yates shuffle** to randomize the order of numbers. I selected it for it's simplicity, time and space efficiency. It can be used to shuffle elements in-place by essentially partitioning the array into unshuffled and shuffled elements. This resulted in a O(n) time complexity and O(1) space complexity.
 
@@ -97,30 +98,30 @@ for (let i = n - 1; i >= 1; i--) {
 
 I chose `Math.random()` as the pseudorandom number generator instead of `Crypto.getRandomValues()` based on the assumption that cryptographically secure numbers are not needed.
 
-### Testing
+## Testing
 
-I created tests for `generateRandomNumbers()` using Node.js' `node:test` and `node:assert` modules. I compiled the following list of tests, which can be found in `tests.mjs` and run using `npm run test`.
+I created tests for `generateRandomNumbers()` using Node.js' `node:test` and `node:assert` modules. I compiled the following list of test cases, which can be found in `tests.mjs` and run using `npm run test`.
 
-**Error Handling**
+### Error Handling
 
 1. throws an error on invalid input type
 1. throws an error on invalid input value
 
-**Boundary Cases**
+### Boundary Cases
 
 1. returns [] when n is 0
 1. returns [1] when n is 1
 
-**Edge Cases**
+### Edge Cases
 
 1. returns [] when n is a float between 0 and 1
 1. returns integers when is a float greater than 1
 
-**Default behaviour**
+### Default behaviour
 
 1. returns an array of 10,000 numbers by default
 
-**Number Range**
+### Number Range
 
 1. returns n numbers in the list
 1. returns only unique numbers
