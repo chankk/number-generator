@@ -7,6 +7,10 @@
 		"start": "node server.mjs",
 		"test": "node tests.mjs"
 	},
+	"engines": {
+		"node": "20.10.0",
+		"npm": "10.2.3"
+	},
 	"author": "Kimberly Chan",
 	"license": "MIT",
 	"dependencies": {},
