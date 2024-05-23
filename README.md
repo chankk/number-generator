@@ -10,7 +10,7 @@ Generates a list of 10,000 numbers in pseudorandom order. Each number from 1 to 
 
 ## Installation
 
-The following instructions describes how to run the application and view the results in a browser.
+The following instructions describe how to run the application and view the results in a browser.
 
 ### Clone the repository
 
